@@ -12,22 +12,11 @@ namespace PremiumCalculatorAppTests
     public class CleanerTest
     {
 
+      
         [Test]
-        public void CreateCleanerObject()
-        {
-            //Arrange
-            CalculatorFactory calObj = new ConcreteCalculator();
-
-            //Act
-            IPremiumCalculator premiumCalculator = calObj.GetPremium("Cleaner");
-
-            //Assert 
-            //Assert.AreEqual(typeof(premiu), actual);
-        }
-        [Test]
-        [TestCase(8000, 35, 35)]
-        [TestCase(25000, 45, 140.625)]
-        [TestCase(90000, 26, 292.5)]
+        [TestCase(8000, 35, 5040)]
+        [TestCase(25000, 45, 20250)]
+        [TestCase(90000, 26, 42120)]
         public void CalculatePremium_Positive(decimal sumInsured, int age, decimal expected)
         {
             //Arrange
@@ -42,9 +31,9 @@ namespace PremiumCalculatorAppTests
         }
 
         [Test]
-        [TestCase(40000, 23, 36)]
-        [TestCase(70000, 45, 120)]
-        [TestCase(80000, 26, 290)]
+        [TestCase(40000, 23, 2000)]
+        [TestCase(70000, 45, 4000)]
+        [TestCase(80000, 26, 6000)]
         public void CalculatePremium_Negative(decimal sumInsured, int age, decimal expected)
         {
             //Arrange
@@ -56,6 +45,19 @@ namespace PremiumCalculatorAppTests
 
             //Assert 
             Assert.AreNotEqual(expected, actual);
+        }
+
+        [Test]
+        public void CalculatePremium_Exception()
+        {
+            //Arrange
+            CalculatorFactory calObj = new ConcreteCalculator();
+
+            //Act
+            IPremiumCalculator premiumCalculator = calObj.GetPremium("Cleaner");
+
+            //Assert 
+            //Assert.AreEqual(typeof(premiu), actual);
         }
     }
 }

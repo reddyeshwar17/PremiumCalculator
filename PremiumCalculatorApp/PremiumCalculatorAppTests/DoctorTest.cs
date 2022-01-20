@@ -12,9 +12,9 @@ namespace PremiumCalculatorAppTests
     {
 
         [Test]
-        [TestCase(70000, 38, 221.666)]
-        [TestCase(25000, 45, 93.75)]
-        [TestCase(90000, 26, 195)]
+        [TestCase(70000, 38, 31920)]
+        [TestCase(25000, 45, 13500)]
+        [TestCase(90000, 26, 28080)]
         public void CalculatePremium_Positive(decimal sumInsured, int age, decimal expected)
         {
             //Arrange
@@ -30,14 +30,14 @@ namespace PremiumCalculatorAppTests
         }
 
         [Test]
-        [TestCase(40000, 23, 36)]
-        [TestCase(70000, 45, 120)]
-        [TestCase(80000, 26, 290)]
+        [TestCase(40000, 23, 2000)]
+        [TestCase(70000, 45, 4500)]
+        [TestCase(80000, 26, 6300)]
         public void CalculatePremium_Negative(decimal sumInsured, int age, decimal expected)
         {
             //Arrange
             CalculatorFactory calObj = new ConcreteCalculator();
-            IPremiumCalculator premiumCalculator = calObj.GetPremium("Cleaner");
+            IPremiumCalculator premiumCalculator = calObj.GetPremium("Doctor");
 
             //Act
             decimal actual = premiumCalculator.CalculateMonthlyPremium(sumInsured, age);
@@ -53,7 +53,7 @@ namespace PremiumCalculatorAppTests
             CalculatorFactory calObj = new ConcreteCalculator();
 
             //Act
-            IPremiumCalculator premiumCalculator = calObj.GetPremium("Cleaner");
+            IPremiumCalculator premiumCalculator = calObj.GetPremium("Doctor");
 
             //Assert 
             //Assert.AreEqual(typeof(premiumCalculator), actual);

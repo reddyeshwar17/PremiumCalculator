@@ -13,7 +13,7 @@ namespace PremiumCalculatorApp.Repository
             decimal clcPrem;
             try
             {
-                clcPrem = (sumInsured * (decimal)RatingFactor.LightManual * age) / RatingFactor.Divider;
+                clcPrem = (sumInsured * (decimal)RatingFactor.LightManual * age) / 1000 * 12;
             }
             catch (Exception ex)
             {
@@ -28,7 +28,7 @@ namespace PremiumCalculatorApp.Repository
     {
         public decimal CalculateMonthlyPremium(decimal sumInsured, int age)
         {
-            return (sumInsured * (decimal)RatingFactor.Professional * age) / RatingFactor.Divider;
+            return (sumInsured * (decimal)RatingFactor.Professional * age) / 1000 * 12;
         }
     }
 
@@ -39,7 +39,7 @@ namespace PremiumCalculatorApp.Repository
             decimal clcPrem;
             try
             {
-                clcPrem = (sumInsured * (decimal)RatingFactor.WhiteCollar * age) / RatingFactor.Divider;
+                clcPrem = (sumInsured * (decimal)RatingFactor.WhiteCollar * age) / 1000 * 12;
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace PremiumCalculatorApp.Repository
             decimal clcPrem;
             try
             {
-                clcPrem = (sumInsured * (decimal)RatingFactor.HeavyManual * age) / RatingFactor.Divider;
+                clcPrem = (sumInsured * (decimal)RatingFactor.HeavyManual * age) / 1000 * 12;
             }
             catch (Exception ex)
             {
