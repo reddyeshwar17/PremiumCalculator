@@ -69,4 +69,3 @@ C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorAp
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorApp.csproj.CopyComplete
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorApp.dll
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorApp.pdb
-C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorApp.csprojAssemblyReference.cache

@@ -23,29 +23,27 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
-    @*<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>*@
 
     <script type="text/javascript">
-
         var myApp = angular.module('myApp', []);
         myApp.controller('premCalcCtrl', ['$scope', '$window', '$http', function ($scope, $window, $http) {
 
             $scope.onChange = function () {
-                var succssData;
-                //var ngData = { ngVal: $scope.Premium };
+
+                if (!$("#myForm").valid()) {
+                    return false;
+                }
                 var viewModel = { Name: $scope.Name, Age: $scope.Age, Occupation: $scope.Occupation, SumInsured: $scope.SumInsured };
                 var post = $http.post('/PremiumCalculator/CalculatePremium', { model: viewModel });
                 post.success(function (data, status) {
                     succssData = data.Premium;
                     alert(data.Premium);
                 });
-                if (succssData == undefined)
-                    alert("Please check and provide all mandatory fields");
             }
         }]);
     </script>
 
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "PreCalcForm" }))
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "PreCalcForm", id = "myForm" }))
     {
         @Html.AntiForgeryToken()
 
@@ -58,17 +56,16 @@
                         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 lblRequired" })
                     </td>
                     <td>
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control required", ng_model = "Name" } })
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control required", ng_model = "Name", placeholder = "Name" } })
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </td>
                 </tr>
-
                 <tr>
                     <td>
                         @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2 lblRequired" })
                     </td>
                     <td>
-                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control required", ng_model = "Age" } })
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control required", ng_model = "Age", placeholder = "Age:18-60" } })
                         @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
                     </td>
                 </tr>
@@ -78,18 +75,8 @@
                         @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2 lblRequired" })
                     </td>
                     <td>
-                        @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control required", ng_model = "DateOfBirth" } })
+                        @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control required datepicker", ng_model = "DateOfBirth", placeholder = "mm-dd-yy" } })
                         @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Occupation, htmlAttributes: new { @class = "control-label col-md-2 lblRequired" })
-                    </td>
-                    <td>
-                        @Html.EnumDropDownListFor(model => model.Occupation, "Select occupation", new { @class = "form-control required", ng_change = "onChange()", ng_model = "Occupation", ng_disabled = "PreCalcForm.$invalid" })
-                        @Html.ValidationMessageFor(model => model.Occupation, "", new { @class = "text-danger" })
                     </td>
                 </tr>
                 <tr>
@@ -100,8 +87,35 @@
                         @Html.EditorFor(model => model.SumInsured, new { htmlAttributes = new { @class = "form-control required", ng_model = "SumInsured", type = "number", placeholder = "$0.000" } })
                         @Html.ValidationMessageFor(model => model.SumInsured, "", new { @class = "text-danger" })
                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Occupation, htmlAttributes: new { @class = "control-label col-md-2 lblRequired" })
+                    </td>
+                    <td>
+                        @Html.EnumDropDownListFor(model => model.Occupation, "Select occupation", new { @class = "form-control required", ng_change = "onChange()", ng_model = "Occupation", ng_disabled = "PreCalcForm.$valid", placeholder = "Select occupation" })
+                        @Html.ValidationMessageFor(model => model.Occupation, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
             </table>
         </div>
     }
+
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui-1.13.0.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "mm-dd-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1960:2022",
+                /* minDate: new Date(1960, 0, 11),*/
+                maxDate: new Date(2022, 0, 23),
+                showOn: "both"
+                //buttonText: "Date"
+            });
+        })
+    </script>
 </body>
 </html>
