@@ -7,3 +7,4 @@ Assumptions:
 3. You have not mentioned either Need to create tables to store occupation,rating and factor.
    Created some enums and constants
 4. I assume client side validation is not enough. Added server side validation
+5. Created Test project and few test cases for Cleaner and Doctor occupation

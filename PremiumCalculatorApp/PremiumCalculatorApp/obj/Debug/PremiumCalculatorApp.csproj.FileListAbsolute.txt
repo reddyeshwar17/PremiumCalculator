@@ -65,7 +65,6 @@ C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\bin\System.Web.Webpages.Razor
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\bin\System.Web.Helpers.xml
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\bin\System.Web.Mvc.xml
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorApp.csprojAssemblyReference.cache
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorApp.csproj.CoreCompileInputs.cache
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorApp.csproj.CopyComplete
 C:\Ortho\PremiumCalculatorApp\PremiumCalculatorApp\obj\Debug\PremiumCalculatorApp.dll

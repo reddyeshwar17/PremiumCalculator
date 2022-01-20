@@ -89,13 +89,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="README.txt" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular-tablesort.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\App.js" />
-    <Content Include="Scripts\controller.js" />
-    <Content Include="Scripts\directives.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
